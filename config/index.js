@@ -39,6 +39,7 @@ module.exports = (app) => {
 
   // Handles access to the favicon
   app.use(favicon(path.join(__dirname, "..", "public", "images", "favicon.ico")));
+  
   app.use(
     session({
       secret: process.env.SECRET_WORD,
@@ -48,7 +49,7 @@ module.exports = (app) => {
         maxAge: 1000 * 60 * 60 * 24 * 7
       },
       store: MongoStore.create({
-        mongoUrl : process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/Art_2",
+        mongoUrl : process.env.MONGODB_URI || "mongodb://127.0.0.1/Art_2",
         ttl: 60 * 60 * 24 * 7
       })
     })

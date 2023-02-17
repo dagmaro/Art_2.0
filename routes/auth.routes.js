@@ -8,13 +8,14 @@ const bcrypt = require("bcryptjs");
 router.get("/signup", (req, res, next) => {
   res.render("auth/signup.hbs");
 });
+
 // POST => reicibir/info
 router.post("/signup", async (req, res, next) => {
   const { username, password } = req.body;
 
   if (username === "" || password === "") {
     res.status(401).render("auth/signup.hbs", {
-      errorMessage: "All the fields should not be empty",
+      errorMessage: "All fields should be completed",
     });
     return;
   }
@@ -28,7 +29,7 @@ router.post("/signup", async (req, res, next) => {
   }
   try {
     // si existe o no el usuario con ese nombre en la DB
-    const uniqueUser = User.findOne({ username: username });
+    const uniqueUser = await User.findOne({ username: username });
     if (uniqueUser !== null) {
       res.render("auth/signup.hbs", {
         errorMessage: "Username already exists",
@@ -79,7 +80,7 @@ router.post("/login", async (req, res, next) => {
     }
     req.session.activeUser = foundUser;
     req.session.save(() => {
-      res.redirect("/profile");
+      res.redirect(`/profile/${foundUser._id}`);
     });
   } catch (error) {
     next(error);

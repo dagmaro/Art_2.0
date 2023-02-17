@@ -6,14 +6,28 @@ const userSchema = new Schema(
     username: {
       type: String,
       trim: true,
-      required: false,
+      required: true,
       unique: true
     },
     password: {
       type: String,
       required: true
     },
-    wallet: Number,
+    url: String,
+    firstName: {
+      type: String,
+      trim: true,
+      required: false,
+    },
+    lastName: {
+      type: String,
+      trim: true,
+      required: false,
+    },
+    wallet: {
+      type: Number,
+      default: 0,
+    },
     userType: {
       type: String,
       enum: ["user", "admin"],
