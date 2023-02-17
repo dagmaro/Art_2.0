@@ -80,7 +80,7 @@ router.post("/login", async (req, res, next) => {
     }
     req.session.activeUser = foundUser;
     req.session.save(() => {
-      res.redirect(`/profile/${foundUser._id}`);
+      res.redirect("/profile");
     });
   } catch (error) {
     next(error);
