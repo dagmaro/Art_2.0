@@ -1,0 +1,22 @@
+<div>
+  <h2>{{nftDetails.name}}</h2>
+
+  <img src="{{nftDetails.url}}" alt="nft-picture" />
+  <p>{{nftDetails.price}}</p>
+  <p>{{nftDetails.collectioType}}</p>
+
+  <form action="/profile/{{nftDetails._id}}/details" method="post">
+    <div class="form-check form-switch">
+    {{#if nftDetails.isForSale}}
+    <input type="checkbox" name="isForSale" role="switch" id="flexSwitchCheckDefault" class="form-check-input" checked >
+    <label for="flexSwitchCheckDefault" name="isForSale" class="form-check-label">For sale</label>
+    </div>
+    <div class="form-check form-switch">
+    {{else}}
+    <input type="checkbox" name="isForSale" role="switch" id="flexSwitchCheckDefault" class="form-check-input" >
+    <label for="flexSwitchCheckDefault" name="isForSale" class="form-check-label">Not for sale</label>
+    {{/if}}
+    </div>
+    <button>Update</button>
+  </form>
+</div>
