@@ -3,9 +3,8 @@
 
   <div>
     {{#each availableNfts}}
-      {{#if activeUser}}
+      {{#if ../isUserActive}}
       <a href="/nft/details">
-      <button>clik</button>
         <h6>Name:{{this.name}}</h6>
         <img src="{{this.url}}" alt="nft-image">
       </a>
