@@ -1,12 +1,12 @@
 <div>
   <h2>Create NFT</h2>
 
-  <form action="/profile/create" method="post">
+  <form action="/profile/create" method="post" enctype="multipart/form-data">
     <label for="name">Name: </label>
     <input type="text" name="name" />
 
     <label for="url">Choose an image</label>
-    <input type="file" name="url" />
+    <input type="file" name="url" width="300px"/>
 
     <label for="price">Price</label>
     <input type="text" name="price" />

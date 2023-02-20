@@ -4,7 +4,7 @@
     <a href="/profile/edit">
       <button>Edit profile</button>
     </a>
-    <img src="{{profileDetails.url}}" alt="user-Picture" />
+    <img src="{{profileDetails.url}}" alt="user-Picture" width="200px" />
     <h4>Username: {{profileDetails.username}}</h4>
     <h5>Name: {{profileDetails.firstName}}</h5>
     <h5>Lastname: {{profileDetails.lastName}}</h5>
@@ -20,7 +20,7 @@
   <div>
     {{#each userNft}}
       <h6>Name:{{this.name}}</h6>
-        <img src="{{this.url}}" alt="nft-image" />
+        <img src="{{this.url}}" alt="nft-image" width="100px"/>
       <a href="/profile/{{this._id}}/details">
       <button>Go see the details</button>
       </a>

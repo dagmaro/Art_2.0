@@ -3,6 +3,7 @@ const router = express.Router();
 const { isLoggedIn } = require("../middlewares/middlewares.js");
 const User = require("../models/User.model.js");
 const Nft = require("../models/Nft.model.js");
+const uploader = require("../middlewares/cloudinary.js")
 
 // GET renderizamos el perfil
 router.get("/", isLoggedIn, async (req, res, next) => {
@@ -25,13 +26,13 @@ router.get("/edit", (req, res, next) => {
 });
 
 // POST => editar el perfil de usuario
-router.post("/edit", async (req, res, next) => {
+router.post("/edit", uploader.single("url"), async (req, res, next) => {
   try {
     const { _id } = req.session.activeUser;
     await User.findByIdAndUpdate(_id, {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
-      url: req.body.url,
+      url: req.file.path,
     });
     res.redirect("/profile");
   } catch (error) {
@@ -45,11 +46,11 @@ router.get("/create", (req, res, next) => {
 });
 
 // POST crear un Nft
-router.post("/create", async (req, res, next) => {
+router.post("/create", uploader.single("url"), async (req, res, next) => {
   try {
     await Nft.create({
       name: req.body.name,
-      url: req.body.url,
+      url: req.file.path,
       price: req.body.price,
       owner: req.session.activeUser._id,
       collectionType: req.body.collectionType,

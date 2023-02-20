@@ -15,6 +15,8 @@ const updateLocals = (req, res, next) => {
   next()
 }
 
+
+
 module.exports = {
   isLoggedIn: isLoggedIn,
   updateLocals: updateLocals

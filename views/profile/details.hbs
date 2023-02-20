@@ -1,6 +1,6 @@
 <div>
 
-  <form action="/profile/edit" method="post">
+  <form action="/profile/edit" method="post" enctype="multipart/form-data">
 
   <label for="firstName">First name: </label>
   <input type="text" name="firstName" />
@@ -10,8 +10,7 @@
 
   <label for="url">Choose your profile picture</label>
   <input type="file" name="url">
-  <button>Load</button>
-
+ 
 
   <button>Update</button>
 
