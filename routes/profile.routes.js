@@ -12,14 +12,31 @@ router.get("/", isLoggedIn, async (req, res, next) => {
     const { _id } = req.session.activeUser;
     const profileDetails = await User.findById(_id);
     const userNft = await Nft.find({ owner: _id });
+    const solicitudeCreditAdmin = await Solicitude.find()
+    .populate("owner")
+    const solicitudeCredit = await Solicitude.find({owner:_id}).select("pendingApproval: 1")
     res.render("profile/main.hbs", {
       profileDetails: profileDetails,
       userNft: userNft,
+      solicitudeCreditAdmin: solicitudeCreditAdmin,
+      pendingApproval: solicitudeCredit,
     });
   } catch (error) {
     next(error);
   }
 });
+
+router.post("/", async(req, res, next)=>{
+  console.log(req.body)
+  // if (){
+  // }
+  try {
+    // await Solicitude.findByIdAndDelete()
+    res.redirect("/profile")
+  } catch (error) {
+    next(error)
+  }
+})
 
 // GET => renderizar el formulario para editar los detalles del usuario
 router.get("/edit", (req, res, next) => {
@@ -77,15 +94,13 @@ router.get("/:id/details", async (req, res, next) => {
 
 // POST cambiar el estado de venta
 router.post("/:id/details", async (req, res, next) => {
-  //   console.log("El estado es", isForSale)
   try {
     let { isForSale } = req.body;
     const { id } = req.params;
-
     if (!!isForSale === false) {
-      isForSale = true;
-    } else if (!!isForSale === true) {
       isForSale = false;
+    } else if (!!isForSale === true) {
+      isForSale = true;
     }
     await Nft.findByIdAndUpdate(id, {
       isForSale: isForSale,
@@ -137,6 +152,12 @@ router.post("/credit", async(req, res, next)=>{
     return;
   }
   try {
+    await Solicitude.create({
+      credit: credit,
+      pendingApproval: true,
+      owner: req.session.activeUser._id
+    })
+    // console.log(credit, req.session.activeUser._id)
     res.redirect("/profile")
 } catch (error) {
   next(error)

@@ -5,17 +5,16 @@
   <p>{{nftDetails.price}}</p>
   <p>{{nftDetails.collectioType}}</p>
 
-  <form action="/profile/{{nftDetails._id}}/details" method="post">
+  <form action="/profile/{{nftDetails._id}}/details" method="post" id="details-nft">
     <div class="form-check form-switch">
       {{#if nftDetails.isForSale}}
-      <input type="checkbox" name="isForSale" role="switch" id="flexSwitchCheckDefault" class="form-check-input"
-        checked />
-      <label for="flexSwitchCheckDefault" name="isForSale" class="form-check-label">For sale</label>
+        <input type="checkbox" name="isForSale" role="switch" id="flexSwitchCheckDefault" class="form-check-input"
+        checked/>
+        <label for="flexSwitchCheckDefault" name="isForSale" class="form-check-label">For sale</label>
       {{else}}
-      <input type="checkbox" name="isForSale" role="switch" id="flexSwitchCheckDefault" class="form-check-input" />
-      <label for="flexSwitchCheckDefault" name="isForSale" class="form-check-label">Not for sale</label>
+        <input type="checkbox" name="isForSale" role="switch" id="flexSwitchCheckDefault" class="form-check-input" />
+        <label for="flexSwitchCheckDefault" name="isForSale" class="form-check-label">Not for sale</label>
       {{/if}}
     </div>
-    <button>Update</button>
   </form>
 </div>
