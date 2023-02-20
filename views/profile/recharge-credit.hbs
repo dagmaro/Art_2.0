@@ -1,0 +1,28 @@
+<div>
+  <h2>Recharge credit</h2>
+  <form action="/profile/credit" method="post">
+    <label for="firstName">Firstname:</label>
+    <input type="text" name="firstName" value="{{firstName}}">
+    <br>
+    <label for="lastName">Lastname:</label>
+    <input type="text" name="lastName" value="{{lastName}}">
+    <br>
+    <label for="credit">Amount to recharge:</label>
+    <input type="number" name="credit">
+    <br>
+    <label for="cardNumber">Card number:</label>
+    <input type="text" name="cardNumber">
+    <br>
+    <label for="expiration">Expiration date:</label>
+    <input type="month" name="expiration">
+    <br>
+    <label for="secretCode">CVV</label>
+    <input type="password" name="secretCode">
+    <br>
+    {{#if errorMessage}}
+      <span class="text-danger">{{this.errorMessage}}</span>
+      <br>
+    {{/if}}
+    <button>Recharge credit</button>
+  </form>
+</div>
