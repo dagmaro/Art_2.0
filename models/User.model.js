@@ -6,13 +6,17 @@ const userSchema = new mongoose.Schema(
       type: String,
       trim: true,
       required: true,
-      unique: true
+      unique: true,
     },
     password: {
       type: String,
-      required: true
+      required: true,
     },
-    url: String,
+    url: {
+      type: String,
+      default:
+        "https://res.cloudinary.com/dhtrxjdas/image/upload/v1676899895/art-project-images/t9uncxxkkovbbzfc6bg5.png",
+    },
     firstName: {
       type: String,
       trim: true,
@@ -30,12 +34,12 @@ const userSchema = new mongoose.Schema(
     userType: {
       type: String,
       enum: ["user", "admin"],
-      default: "user"
-    }
+      default: "user",
+    },
   },
   {
-    // this second object adds extra properties: `createdAt` and `updatedAt`    
-    timestamps: true
+    // this second object adds extra properties: `createdAt` and `updatedAt`
+    timestamps: true,
   }
 );
 

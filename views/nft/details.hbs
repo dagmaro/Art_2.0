@@ -1,0 +1,12 @@
+<div>
+    <h2>NFT Details</h2>
+
+    <h4>{{this.nftDetails.name}}</h4>
+    <img src="{{nftDetails.url}}" alt="nft-picture" width="200px">
+    <p>{{nftDetails.price}}</p>
+
+    <form action="/gallery/{{nftDetails._id}}/details" method="post">
+        <button>Buy</button>
+    </form>
+
+</div>

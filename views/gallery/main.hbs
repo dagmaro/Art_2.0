@@ -4,7 +4,7 @@
   <div>
     {{#each availableNfts}}
       {{#if ../isUserActive}}
-      <a href="/nft/details">
+      <a href="/gallery/{{this._id}}/details">
         <h6>Name:{{this.name}}</h6>
         <img src="{{this.url}}" alt="nft-image" width="200px">
       </a>
