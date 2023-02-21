@@ -3,8 +3,8 @@ const router = express.Router();
 const { isLoggedIn } = require("../middlewares/middlewares.js");
 const User = require("../models/User.model.js");
 const Nft = require("../models/Nft.model.js");
-const Solicitude = require("../models/Solicitude.model.js")
-const uploader = require("../middlewares/cloudinary.js")
+const Solicitude = require("../models/Solicitude.model.js");
+const uploader = require("../middlewares/cloudinary.js");
 
 // GET renderizamos el perfil del usuario
 router.get("/", isLoggedIn, async (req, res, next) => {
@@ -12,74 +12,83 @@ router.get("/", isLoggedIn, async (req, res, next) => {
     const { _id } = req.session.activeUser;
     const profileDetails = await User.findById(_id);
     const userNft = await Nft.find({ owner: _id });
-    const solicitudeCreditAdmin = await Solicitude.find()
-    .populate("owner")
-    const solicitudeCredit = await Solicitude.find({owner:_id}).select("pendingApproval: 1")
+    const solictudeInfoPending = await Solicitude.find({
+      pendingApproval: "pending",
+    }).populate("owner");
+    const solictudeInfoAccepted = await Solicitude.find({
+      pendingApproval: "accepted",
+    }).populate("owner");
+    const solictudeInfoRejected = await Solicitude.find({
+      pendingApproval: "rejected",
+    }).populate("owner");
+    let status = "";
+    if (solictudeInfoPending[0] !== undefined) {
+      status = solictudeInfoPending[0].pendingApproval;
+    } else {
+      status = "";
+    }
     res.render("profile/main.hbs", {
       profileDetails: profileDetails,
       userNft: userNft,
-      solicitudeCreditAdmin: solicitudeCreditAdmin,
-      pendingApproval: solicitudeCredit,
+      pendingApproval: solictudeInfoPending,
+      acceptedApproval: solictudeInfoAccepted,
+      rejectedApproval: solictudeInfoRejected,
+      status: status,
     });
   } catch (error) {
     next(error);
   }
 });
 
-// router.post("/", async(req, res, next)=>{
-//   console.log(req.body)
-//   // if (){
-//   // }
-//   try {
-//     // await Solicitude.findByIdAndDelete()
-//     res.redirect("/profile")
-//   } catch (error) {
-//     next(error)
-//   }
-// });
-
 // GET => para renderizar los detalles de las solicitudes
 router.get("/:id/solicitude-details", async (req, res, next) => {
-  const id = req.params.id
-  const userId = req.session.activeUser._id
+  const id = req.params.id;
+  const userId = req.session.activeUser._id;
   try {
     const profileDetails = await User.findById(userId);
-    const solicitudeCreditAdmin = await Solicitude.find()
-      .populate("owner")
-    const eachSolicitude = await Solicitude.findById(id).populate("owner")
+    const solicitudeCreditAdmin = await Solicitude.find({
+      pendingApproval: "pending",
+    }).populate("owner");
+    const eachSolicitude = await Solicitude.findById(id).populate("owner");
     res.render("profile/solicitude-details.hbs", {
       profileDetails: profileDetails,
       solicitudeCreditAdmin: solicitudeCreditAdmin,
-      eachSolicitude: eachSolicitude
-    })
+      eachSolicitude: eachSolicitude,
+    });
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
+});
 
 // POST => actualizar la DB con el resultado de la solicitud
-router.post("/:id/solicitude-details", async(req, res, next) => {
-  const id = req.params.id
+router.post("/:id/solicitude-details/:response", async (req, res, next) => {
+  const id = req.params.id;
+  const response = req.params.response;
+  console.log(response);
   try {
-     const solicitudeInfo = await Solicitude.findById(id).populate("owner")
-     const transactionCredit = solicitudeInfo.owner.wallet + solicitudeInfo.credit
-    if(req.body.name === "yes"){
-      await User.findByIdAndUpdate(solicitudeInfo.owner._id,{
-      wallet: transactionCredit,
-      pendingApproval: false
-      })
-    } else if (req.body.name === "no") {
-      await User.findByIdAndUpdate(solicitudeInfo.owner._id,{
-        pendingApproval: false
-        })
+    const solicitudeInfo = await Solicitude.findById(id).populate("owner");
+    const transactionCredit =
+      solicitudeInfo.owner.wallet + solicitudeInfo.credit;
+    console.log(transactionCredit);
+    const ownerId = solicitudeInfo.owner._id;
+
+    if (response === "yes") {
+      await Solicitude.findByIdAndUpdate(id, {
+        pendingApproval: "accepted",
+      });
+      await User.findByIdAndUpdate(ownerId, {
+        wallet: transactionCredit,
+      });
+    } else if (response === "no") {
+      await Solicitude.findByIdAndUpdate(id, {
+        pendingApproval: "rejected",
+      });
     }
-    res.redirect("/profile")
-   } catch (error) {
-    next(error)
-   }
-})
-
-
+    res.redirect("/profile");
+  } catch (error) {
+    next(error);
+  }
+});
 
 // GET => renderizar el formulario para editar los detalles del usuario
 router.get("/edit", (req, res, next) => {
@@ -155,24 +164,29 @@ router.post("/:id/details", async (req, res, next) => {
 });
 
 // GET ==> renderizo el formulario de recarga de credito
-router.get("/credit", async (req, res, next)=>{
-  const { _id } = req.session.activeUser
+router.get("/credit", async (req, res, next) => {
+  const { _id } = req.session.activeUser;
   try {
-    const userInfo = await User.findById(_id)
+    const userInfo = await User.findById(_id);
     // .select({"firstName: 1", "lastName: 1"})
     res.render("profile/recharge-credit.hbs", {
       firstName: userInfo.firstName,
-      lastName: userInfo.lastName
-    })
+      lastName: userInfo.lastName,
+    });
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
+});
 
 // POST ==> solicitud de recarga de credito al admin
-router.post("/credit", async(req, res, next)=>{
+router.post("/credit", async (req, res, next) => {
   const { credit, cardNumber, expiration, secretCode } = req.body;
-  if (credit === "" || cardNumber === "" || expiration === "" || secretCode === "") {
+  if (
+    credit === "" ||
+    cardNumber === "" ||
+    expiration === "" ||
+    secretCode === ""
+  ) {
     res.status(401).render("profile/recharge-credit.hbs", {
       errorMessage: "All fields should be completed",
     });
@@ -181,32 +195,28 @@ router.post("/credit", async(req, res, next)=>{
   const passwordRegex1 = /^[0-9]{16,}$/;
   if (passwordRegex1.test(cardNumber) === false) {
     res.status(401).render("profile/recharge-credit.hbs", {
-      errorMessage:
-        "The card number should have 16 digits",
+      errorMessage: "The card number should have 16 digits",
     });
     return;
   }
   const passwordRegex2 = /^[0-9]{3,4}$/;
   if (passwordRegex2.test(secretCode) === false) {
     res.status(401).render("profile/recharge-credit.hbs", {
-      errorMessage:
-        "The CVV should have 3 digits (4 in case of AMEX card)",
+      errorMessage: "The CVV should have 3 digits (4 in case of AMEX card)",
     });
     return;
   }
   try {
     await Solicitude.create({
       credit: credit,
-      owner: req.session.activeUser._id
-    })
-    await User.findByIdAndUpdate(req.session.activeUser._id, {
-      pendingApproval: true,
-    })
-    res.redirect("/profile")
-} catch (error) {
-  next(error)
-}
-})
-
+      pendingApproval: "pending",
+      owner: req.session.activeUser._id,
+    });
+    // console.log(pendingApproval)
+    res.redirect("/profile");
+  } catch (error) {
+    next(error);
+  }
+});
 
 module.exports = router;
