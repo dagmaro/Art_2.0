@@ -5,15 +5,17 @@
   <br>
     {{#if isUserAdmin}}
       {{#each solicitudeCreditAdmin}}
-        <p>{{this.owner.firstName}} {{this.owner.lastName}} wants to add ${{this.credit}}</p>
-        <form action="/profile" method="post">
+      <a href="/profile/{{this._id}}/solicitude-details">
+        <p>Solicitude from {{this.owner.firstName}} {{this.owner.lastName}}</p>
+      </a>
+        {{!-- <form action="/profile" method="post">
           <label for="accept-solicitude">Do you accept the solicitude? (yes/no)</label>
           <br>
           <input type="text" name="accept-solicitude">
           <br>
           <button>Respond solicitude</button>
           <br>
-        </form>
+        </form> --}}
       {{/each}}
     {{else}}
     <div>

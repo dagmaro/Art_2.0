@@ -26,17 +26,43 @@ router.get("/", isLoggedIn, async (req, res, next) => {
   }
 });
 
-router.post("/", async(req, res, next)=>{
-  console.log(req.body)
-  // if (){
-  // }
+// router.post("/", async(req, res, next)=>{
+//   console.log(req.body)
+//   // if (){
+//   // }
+//   try {
+//     // await Solicitude.findByIdAndDelete()
+//     res.redirect("/profile")
+//   } catch (error) {
+//     next(error)
+//   }
+// });
+
+// GET => para renderizar los detalles de las solicitudes
+router.get("/:id/solicitude-details", async (req, res, next) => {
+  const id = req.params.id
+  const userId = req.session.activeUser._id
   try {
-    // await Solicitude.findByIdAndDelete()
-    res.redirect("/profile")
+    const profileDetails = await User.findById( userId);
+    const solicitudeCreditAdmin = await Solicitude.find()
+      .populate("owner")
+    const eachSolicitude = await Solicitude.findById(id).populate("owner")
+    res.render("profile/solicitude-details.hbs", {
+      profileDetails: profileDetails,
+      solicitudeCreditAdmin: solicitudeCreditAdmin,
+      eachSolicitude: eachSolicitude
+    })
   } catch (error) {
     next(error)
   }
 })
+
+// POST => actualizar la DB con el resultado de la solicitud
+router.post("/:id/solicitude-details", (req, res, next) => {
+   
+})
+
+
 
 // GET => renderizar el formulario para editar los detalles del usuario
 router.get("/edit", (req, res, next) => {
@@ -157,6 +183,8 @@ router.post("/credit", async(req, res, next)=>{
       pendingApproval: true,
       owner: req.session.activeUser._id
     })
+    // si cambiamos el modelo, tendríamos que crear await User.finbyidandupdate 
+    // y actualizar el valor de pendingapproval
     // console.log(credit, req.session.activeUser._id)
     res.redirect("/profile")
 } catch (error) {

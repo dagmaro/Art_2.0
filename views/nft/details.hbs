@@ -5,8 +5,16 @@
     <img src="{{nftDetails.url}}" alt="nft-picture" width="200px">
     <p>{{nftDetails.price}}</p>
 
+    {{#if sameId}}
+    <p>This is your NFT</p>
+    {{else}}
     <form action="/gallery/{{nftDetails._id}}/details" method="post">
         <button>Buy</button>
     </form>
+    {{/if}}
+
+    {{#if errorMessage}}
+    <span class="text-danger">{{this.errorMessage}}</span>
+    {{/if}}
 
 </div>

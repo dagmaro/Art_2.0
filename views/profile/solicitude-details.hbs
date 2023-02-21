@@ -1,0 +1,23 @@
+<div>
+    <h2>Profile</h2>
+    <h4>Username: {{profileDetails.username}}</h4>
+    <img src="{{profileDetails.url}}" alt="user-Picture" width="200px" />
+    <br>
+    {{#each solicitudeCreditAdmin}}
+    <a href="/profile/{{this._id}}/solicitude-details">
+        <p>Solicitude from {{this.owner.firstName}} {{this.owner.lastName}}</p>
+    </a>
+    {{/each}}
+
+    <p>{{eachSolicitude.owner.firstName}} {{eachSolicitude.owner.lastName}} wants to recharge
+        ${{eachSolicitude.credit}}.</p>
+    <p>This user has ${{eachSolicitude.owner.wallet}}</p>
+
+    <form action="/{{this._id}}/solicitude-details" method="post">
+        <label for="accept-solicitude">Do you accept the solicitude? (yes/no)</label>
+        <br>
+        <input type="text" name="accept-solicitude">
+        <br>
+        <button>Respond solicitude</button>
+        <br>
+    </form>
