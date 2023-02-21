@@ -13,7 +13,7 @@
         ${{eachSolicitude.credit}}.</p>
     <p>This user has ${{eachSolicitude.owner.wallet}}</p>
 
-    <form action="/{{this._id}}/solicitude-details" method="post">
+    <form action="/profile/{{eachSolicitude._id}}/solicitude-details" method="post">
         <label for="accept-solicitude">Do you accept the solicitude? (yes/no)</label>
         <br>
         <input type="text" name="accept-solicitude">

@@ -43,7 +43,7 @@ router.get("/:id/solicitude-details", async (req, res, next) => {
   const id = req.params.id
   const userId = req.session.activeUser._id
   try {
-    const profileDetails = await User.findById( userId);
+    const profileDetails = await User.findById(userId);
     const solicitudeCreditAdmin = await Solicitude.find()
       .populate("owner")
     const eachSolicitude = await Solicitude.findById(id).populate("owner")
@@ -58,8 +58,25 @@ router.get("/:id/solicitude-details", async (req, res, next) => {
 })
 
 // POST => actualizar la DB con el resultado de la solicitud
-router.post("/:id/solicitude-details", (req, res, next) => {
-   
+router.post("/:id/solicitude-details", async(req, res, next) => {
+  const id = req.params.id
+  try {
+     const solicitudeInfo = await Solicitude.findById(id).populate("owner")
+     const transactionCredit = solicitudeInfo.owner.wallet + solicitudeInfo.credit
+    if(req.body.name === "yes"){
+      await User.findByIdAndUpdate(solicitudeInfo.owner._id,{
+      wallet: transactionCredit,
+      pendingApproval: false
+      })
+    } else if (req.body.name === "no") {
+      await User.findByIdAndUpdate(solicitudeInfo.owner._id,{
+        pendingApproval: false
+        })
+    }
+    res.redirect("/profile")
+   } catch (error) {
+    next(error)
+   }
 })
 
 
@@ -180,12 +197,11 @@ router.post("/credit", async(req, res, next)=>{
   try {
     await Solicitude.create({
       credit: credit,
-      pendingApproval: true,
       owner: req.session.activeUser._id
     })
-    // si cambiamos el modelo, tendríamos que crear await User.finbyidandupdate 
-    // y actualizar el valor de pendingapproval
-    // console.log(credit, req.session.activeUser._id)
+    await User.findByIdAndUpdate(req.session.activeUser._id, {
+      pendingApproval: true,
+    })
     res.redirect("/profile")
 } catch (error) {
   next(error)
