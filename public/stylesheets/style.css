@@ -4,6 +4,7 @@ body {
   background-image: url("../images/bg.webp");
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment:fixed;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -26,7 +27,7 @@ h1 {
 
 h2 {
   color: white;
-  font-size: 3rem;
+  font-size: 4.5rem;
   text-align: center;
   margin-top: 2rem;
   margin-bottom: 1rem;
@@ -76,8 +77,25 @@ span {
   justify-content: center;
 }
 
+#myBtn {
+  /* display: none; */
+  background-color: antiquewhite;
+  color: black;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+#myBtn:hover {
+  background-color: bisque;
+}
+
 footer {
   background-color: antiquewhite;
+  color: black;
   margin-top: auto;
   text-align: center;
 }

@@ -7,7 +7,7 @@
       <div class="col d-flex justify-content-center" style="width: 33%">
         <div class="card text-center d-flex align-items-center" style="width: 80%">
           <a href="/gallery/{{this._id}}/details">
-            <img src="{{this.url}}" alt="nft-image" width="300px">
+            <img src="{{this.url}}" class="card-img-top" alt="nft-image" width="300px">
           </a>
           <div class="card-body">
             <h4 class="card-title">NFT: <span>{{this.name}}</span></h4>
@@ -19,7 +19,7 @@
       {{else}}
       <div class="col d-flex justify-content-center" style="width: 33%">
         <div class="card text-center d-flex align-items-center" style="width: 80%">
-          <img src="{{this.url}}" alt="nft-image" width="300px">
+          <img src="{{this.url}}" class="card-img-top" alt="nft-image" width="300px">
           <div class="card-body">
             <h4 class="card-title">NFT name: {{this.name}}</h4>
             <h6 class="card-subtitle mb-2 text-muted" style="font-size: medium">Collection: {{this.collectionType}}</h6>
@@ -31,4 +31,5 @@
       {{/each}}
     </div>
   </div>
+  <button onclick="topFunction()" id="myBtn" title="Go to top">↑</button>
 </div>

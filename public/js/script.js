@@ -11,3 +11,12 @@ document.getElementById("flexSwitchCheckDefault")
 .addEventListener("change", ()=>{
   document.getElementById("details-nft").submit()
 })
+
+const myButton = document.getElementById("myBtn")
+
+window.onscroll = function() {scrollFunction()}
+
+function topFunction() {
+  document.body.scrollTop = 0; // For safari
+  document.documentElement.scrollTop = 0; // For Chrome...
+}
