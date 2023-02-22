@@ -1,19 +1,25 @@
-<div>
-  <h2>NFT: {{nftDetails.name}}</h2>
+<div class="card mb-3" style="max-width: 1050px; margin-left: 250px; margin-top: 20px">
 
-  <img src="{{nftDetails.url}}" alt="nft-picture" width="300px" />
-  <p>{{nftDetails.price}}</p>
-  <p>{{nftDetails.collectionType}}</p>
+  <div class="col-md-4">
+    <img src="{{nftDetails.url}}" class="img-fluid rounded-start" alt="nft-picture" width="400px" />
+  </div>
+  <div class="col text-center">
+    <div class="card-body">
+      <h2 class="card-title">NFT: {{nftDetails.name}}</h2>
+      <p class="card-text">{{nftDetails.price}}</p>
+      <p class="card-text">{{nftDetails.collectionType}}</p>
+    </div>
+  </div>
 
   <form action="/profile/{{nftDetails._id}}/details" method="post" id="details-nft">
     <div class="form-check form-switch">
       {{#if nftDetails.isForSale}}
-        <input type="checkbox" name="isForSale" role="switch" id="flexSwitchCheckDefault" class="form-check-input"
-        checked/>
-        <label for="flexSwitchCheckDefault" name="isForSale" class="form-check-label">For sale</label>
+      <input type="checkbox" name="isForSale" role="switch" id="flexSwitchCheckDefault" class="form-check-input"
+        checked />
+      <label for="flexSwitchCheckDefault" name="isForSale" class="form-check-label">For sale</label>
       {{else}}
-        <input type="checkbox" name="isForSale" role="switch" id="flexSwitchCheckDefault" class="form-check-input" />
-        <label for="flexSwitchCheckDefault" name="isForSale" class="form-check-label">Not for sale</label>
+      <input type="checkbox" name="isForSale" role="switch" id="flexSwitchCheckDefault" class="form-check-input" />
+      <label for="flexSwitchCheckDefault" name="isForSale" class="form-check-label">Not for sale</label>
       {{/if}}
     </div>
   </form>

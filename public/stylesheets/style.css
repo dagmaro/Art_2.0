@@ -78,15 +78,15 @@ span {
 }
 
 #myBtn {
-  /* display: none; */
   background-color: antiquewhite;
   color: black;
-  cursor: pointer;
   padding: 15px;
   border-radius: 10px;
   margin-bottom: 10px;
   margin-left: 10px;
   font-size: 20px;
+  position: relative;
+  left: 95%;
 }
 
 #myBtn:hover {
