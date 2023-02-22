@@ -1,19 +1,16 @@
-<div>
-  <h2>Sign up</h2>
-  <form action="/auth/signup" method="post" class="row g-3">
-    <div>
+<div class="auth">
+  <div class="auth-class border border-secondary border-3 rounded">
+    <h3>Sign up</h3>
+    <br>
+    <form action="/auth/signup" method="post" class="auth-form row g-3">
       <label for="username" class="form-label">Insert username</label>
-      <input type="text" name="username" class="form-control" />
-    </div>
-    <br />
-    <div>
+      <input type="text" name="username" class="form-control"/>
       <label for="password" class="form-label">Insert a password</label>
       <input type="password" name="password" class="form-control"/>
-    </div>
-    <br />
-    {{#if errorMessage}}
-    <span class="text-danger">{{this.errorMessage}}</span>
-    {{/if}}
-    <button class="btn btn-primary">Sign up</button>
-  </form>
+      {{#if errorMessage}}
+        <span class="text-danger">{{this.errorMessage}}</span>
+      {{/if}}
+      <button class="btn btn-primary">Sign up</button>
+    </form>
+  </div>
 </div>

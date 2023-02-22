@@ -35,14 +35,18 @@ router.get("/:id/details", async (req, res, next) => {
     next(error);
   }
 });
-// POST
+
+// POST ==> lleva a cabo la transaccion de compra-venta
 router.post("/:id/details", async (req, res, next) => {
   try {
     const { id } = req.params;
-    const nftInfo = await Nft.findById(id).select("price");
+    const nftInfo = await Nft.findById(id).populate("owner")
+    const walletSeller = nftInfo.owner.wallet + nftInfo.price;
     const transactionRest = req.session.activeUser.wallet - nftInfo.price;
-
     if (req.session.activeUser.wallet >= nftInfo.price) {
+      await User.findByIdAndUpdate(nftInfo.owner._id,{
+        wallet: walletSeller
+      })
       await Nft.findByIdAndUpdate(id, {
         owner: req.session.activeUser._id,
         isForSale: false,
@@ -58,7 +62,6 @@ router.post("/:id/details", async (req, res, next) => {
         errorMessage: "You don't have enough credit to buy this Nft",
       });
     }
-    // const updateCredit = await User.findByIdAndUpdate(req.session.activeUser._id).select("wallet")
   } catch (error) {
     next(error);
   }

@@ -4,6 +4,10 @@ body {
   background-image: url("../images/bg.webp");
   background-size: cover;
   background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: white;
 }
 
 nav {
@@ -11,10 +15,63 @@ nav {
   padding: 0px;
 }
 
+footer {
+  background-color: antiquewhite;
+  margin-top: auto;
+  text-align: center;
+}
+
 a {
-  color: #00b7ff;
+  color: rgb(0, 183, 255);
 }
 
 h1 {
-  color: 15px;
+  color: white;
+  font-size: 5rem;
+}
+
+h2 {
+  color: white;
+  font-size: 3rem;
+}
+
+h3 {
+  color: white;
+  font-size: 2rem;
+}
+
+
+.card{
+  background-color: rgba(206, 191, 172, 0.7);
+  border-radius: 15px;
+}
+
+.card-body {
+  color: rgb(255, 255, 255);
+  font-weight: bolder;
+}
+
+.btn-primary {
+  border-radius: 15px;
+  width: 33%;
+}
+
+.auth {
+  display: flex;
+  justify-content: center;
+  margin-top: 150px;
+}
+
+.auth-class {
+  background-color: rgba(206, 191, 172, 0.7);
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px;
+}
+
+.auth-form {
+  display: flex;
+  justify-content: center;
 }

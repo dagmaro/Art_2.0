@@ -1,19 +1,16 @@
-<div>
-  <h2>Log in</h2>
-  <form action="/auth/login" method="post" class="row g-3">
-    <div>
-      <label for="username" class="form-label">Username</label>
-      <input type="text" name="username" class="form-control" />
-    </div>
-    <br />
-    <div>
-      <label for="password" class="form-label">Password</label>
-      <input type="password" name="password" class="form-control"/>
-    </div>
-    <br />
-    {{#if errorMessage}}
-    <span class="text-danger">{{this.errorMessage}}</span>
-    {{/if}}
-    <button class="btn btn-primary">Log in</button>
-  </form>
+<div class="auth">
+  <div class="auth-class border border-secondary border-3 rounded">
+    <h3>Log in</h3>
+    <br>
+    <form action="/auth/login" method="post" class="auth-form row g-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" name="username" class="form-control" />
+        <label for="password" class="form-label">Password</label>
+        <input type="password" name="password" class="form-control"/>
+      {{#if errorMessage}}
+        <span class="text-danger">{{this.errorMessage}}</span>
+      {{/if}}
+      <button class="btn btn-primary">Log in</button>
+    </form>
+  </div>
 </div>
