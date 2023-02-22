@@ -1,17 +1,17 @@
 <div>
-  <h2>Gallery</h2>
-  <div class="card text-center" style="width: 90vw;">
+  <h2>The Magic</h2>
+  <div class="card text-center" style="width: 90vw; margin-left: 60px;">
     <div class="row row-cols-1 row-cols-md-2 g-4 mt-5">
       {{#each availableNfts}}
       {{#if ../isUserActive}}
       <div class="col d-flex justify-content-center" style="width: 33%">
         <div class="card text-center d-flex align-items-center" style="width: 80%">
           <a href="/gallery/{{this._id}}/details">
-            <img src="{{this.url}}" alt="nft-image" width="200px">
+            <img src="{{this.url}}" alt="nft-image" width="300px">
           </a>
           <div class="card-body">
-            <h4 class="card-title">NFT name: {{this.name}}</h4>
-            <h6 class="card-subtitle mb-2 text-muted" style="font-size: xx-small">Collection: {{this.collectionType}}</h6>
+            <h4 class="card-title">NFT: <span>{{this.name}}</span></h4>
+            <h6 class="card-subtitle mb-2 text-muted" style="font-size: medium">Collection: {{this.collectionType}}</h6>
             <p class="card-text" style="font-size: xx-small">...</p>
           </div>
         </div>
@@ -19,10 +19,10 @@
       {{else}}
       <div class="col d-flex justify-content-center" style="width: 33%">
         <div class="card text-center d-flex align-items-center" style="width: 80%">
-          <img src="{{this.url}}" alt="nft-image" width="200px">
+          <img src="{{this.url}}" alt="nft-image" width="300px">
           <div class="card-body">
             <h4 class="card-title">NFT name: {{this.name}}</h4>
-            <h6 class="card-subtitle mb-2 text-muted" style="font-size: xx-small">Collection: {{this.collectionType}}</h6>
+            <h6 class="card-subtitle mb-2 text-muted" style="font-size: medium">Collection: {{this.collectionType}}</h6>
             <p class="card-text" style="font-size: xx-small">...</p>
           </div>
         </div>

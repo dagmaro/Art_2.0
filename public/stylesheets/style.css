@@ -15,12 +15,6 @@ nav {
   padding: 0px;
 }
 
-footer {
-  background-color: antiquewhite;
-  margin-top: auto;
-  text-align: center;
-}
-
 a {
   color: rgb(0, 183, 255);
 }
@@ -33,6 +27,7 @@ h1 {
 h2 {
   color: white;
   font-size: 3rem;
+  text-align: center;
 }
 
 h3 {
@@ -40,6 +35,9 @@ h3 {
   font-size: 2rem;
 }
 
+span {
+  color: darkmagenta;
+}
 
 .card{
   background-color: rgba(206, 191, 172, 0.7);
@@ -74,4 +72,10 @@ h3 {
 .auth-form {
   display: flex;
   justify-content: center;
+}
+
+footer {
+  background-color: antiquewhite;
+  margin-top: auto;
+  text-align: center;
 }
