@@ -2,18 +2,18 @@
 <div class="auth" style="margin-top: 10px">
   <div class="auth-class border border-secondary border-3 rounded" style="padding-bottom: 50px; padding-top: 60px">
     <form action="/profile/credit" method="post" class="auth-form row g-3">
-      <label for="firstName" class="form-label" style="font-size: 1.25rem;">Firstname:</label>
+      <label for="firstName" class="form-label" style="font-size: 1.25rem;">First Name:</label>
       <input type="text" name="firstName" class="form-control" value="{{firstName}}">
-      <label for="lastName" class="form-label" style="font-size: 1.25rem;">Lastname:</label>
+      <label for="lastName" class="form-label" style="font-size: 1.25rem;">Last Name:</label>
       <input type="text" name="lastName" class="form-control" value="{{lastName}}">
       <label for="credit" class="form-label" style="font-size: 1.25rem;">Amount to recharge:</label>
-      <input type="number" name="credit" class="form-control">
+      <input type="number" name="credit" placeholder="000000" class="form-control">
       <label for="cardNumber" class="form-label" style="font-size: 1.25rem;">Card number:</label>
-      <input type="text" name="cardNumber" class="form-control">
+      <input type="text" name="cardNumber" placeholder="1234 5678 9012 4567" class="form-control">
       <label for="expiration" class="form-label" style="font-size: 1.25rem;">Expiration date:</label>
       <input type="month" name="expiration" min="2023-03" class="form-control">
       <label for="secretCode" class="form-label" style="font-size: 1.25rem;">CVV</label>
-      <input type="password" name="secretCode" class="form-control">
+      <input type="password" name="secretCode" placeholder="···" class="form-control">
       {{#if errorMessage}}
       <span class="text-danger">{{this.errorMessage}}</span>
       {{/if}}

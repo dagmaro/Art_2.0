@@ -3,17 +3,14 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("Art_2.0 JS imported successfully!");
 });
 
-// document.getElementById("details-nft").addEventListener("submit", (e)=>{
-//   e.preventDefault()
-// })
-
 document.getElementById("flexSwitchCheckDefault")
 .addEventListener("change", ()=>{
   document.getElementById("details-nft").submit()
 })
 
-const myButton = document.getElementById("myBtn")
+// 
 
+const myButton = document.getElementById("myBtn")
 window.onscroll = function() {scrollFunction()}
 
 function topFunction() {
@@ -21,9 +18,4 @@ function topFunction() {
   document.documentElement.scrollTop = 0; // For Chrome...
 }
 
-const myModal = document.getElementById('exampleModal')
 
-
-myModal.addEventListener('shown.bs.modal', () => {
-  myBtn.focus()
-})

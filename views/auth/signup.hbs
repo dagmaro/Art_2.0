@@ -3,10 +3,10 @@
     <h3 style="font-weight: bolder;">Sign up</h3>
     <br>
     <form action="/auth/signup" method="post" class="auth-form row g-3">
-      <label for="username" class="form-label" style="font-size: 1.25rem;">Insert username</label>
-      <input type="text" name="username" class="form-control"/>
+      <label for="username" class="form-label" style="font-size: 1.25rem;"></label>
+      <input type="text" placeholder="Insert your username" name="username" class="form-control"/>
       <label for="password" class="form-label" style="font-size: 1.25rem;">Insert a password</label>
-      <input type="password" name="password" class="form-control"/>
+      <input type="password" placeholder="Insert your password" name="password" class="form-control"/>
       {{#if errorMessage}}
         <span class="text-danger">{{this.errorMessage}}</span>
       {{/if}}

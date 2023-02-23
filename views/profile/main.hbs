@@ -7,7 +7,7 @@
     <img src="{{profileDetails.url}}" class="card-img-top rounded-circle" alt="user-Picture" width="100px" style="padding: 16px" />
     <br>
     <br>
-    <h4 style="padding: 16px">Username: {{profileDetails.username}}</h4>
+    <h4 style="padding: 16px"> Username: <span>{{profileDetails.username}}</span></h4>
   </div>
   <div class="card" style="width: 70vw; height: 65vh;  margin-left: 40px;">
     <div class="container">
@@ -26,7 +26,7 @@
         </div>
         <div class="vr"></div>
         <div class="col" style="height: 60vh">
-          <h3>Accepted Solicitudes</h3>
+          <h3>  <span style="color: green">Accepted</span> Solicitudes</h3>
           <ul>
             {{#each acceptedApproval}}
             <h5>
@@ -40,7 +40,7 @@
         </div>
         <div class="vr"></div>
         <div class="col" style="height: 60vh">
-          <h3>Rejected Solicitudes</h3>
+          <h3><span style="color: red">Rejected</span> Solicitudes</h3>
           <ul>
             {{#each rejectedApproval}}
             <h5>
@@ -62,13 +62,13 @@
 <h2>Profile</h2>
 <div class="d-flex flex-direction-row">
   <div class="card" style="width: 20vw; height: 100vh;  margin-left: 40px; ">
-    <img class="card-img-top rounded-circle" src="{{profileDetails.url}}" alt="user-Picture" style="padding: 16px"/>
+    <img class="card-img-top rounded-circle" src="{{profileDetails.url}}" alt="user-Picture" style="padding: 16px" width="50px"  height="400px"/>
     <div class="card-body">
-      <h4>Username: {{profileDetails.username}}</h4>
+      <h4>Username: <span>{{profileDetails.username}}</span></h4>
       <br />
-      <h5>Name: {{profileDetails.firstName}}</h5>
-      <h5>Lastname: {{profileDetails.lastName}}</h5>
-      <h5>Wallet: ${{profileDetails.wallet}}
+      <h5>Name: <span>{{profileDetails.firstName}}</span></h5>
+      <h5>Lastname: <span>{{profileDetails.lastName}}</span></h5>
+      <h5>Wallet: <span>${{profileDetails.wallet}}</span> 
         <span class="text-primary">{{status}}</span>
       </h5>
       <br>
@@ -105,5 +105,4 @@
     </div>
   </div>
 </div>
-
 {{/if}}
