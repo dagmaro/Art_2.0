@@ -2,81 +2,108 @@
 
 {{#if isUserAdmin}}
 <h2>Profile</h2>
-<h4>Username: {{profileDetails.username}}</h4>
-<img src="{{profileDetails.url}}" alt="user-Picture" width="200px" />
-<br />
-<h3>Pending solicitudes</h3>
-<ol>
-  {{#each pendingApproval}}
-  <a href="/profile/{{this._id}}/solicitude-details">
-    <li>Solicitude from {{this.owner.firstName}} {{this.owner.lastName}}</li>
-  </a>
-  {{/each}}
-</ol>
-<h3>Accepted Solicitudes</h3>
-<ol>
-  {{#each acceptedApproval}}
-  <li>Solicitude from
-    {{this.owner.firstName}}
-    {{this.owner.lastName}}</li>
-  {{/each}}
-</ol>
-<h3>Rejected Solicitudes</h3>
-<ol>
-  {{#each rejectedApproval}}
-  <li>Solicitude from {{this.owner.firstName}} {{this.owner.lastName}}</li>
-  {{/each}}
-</ol>
+<div class="d-flex flex-direction-row">
+  <div class="card" style="width: 20vw; height: 60vh;  margin-left: 40px;">
+    <img src="{{profileDetails.url}}" class="card-img-top rounded-circle" alt="user-Picture" width="100px" style="padding: 16px" />
+    <br>
+    <br>
+    <h4 style="padding: 16px">Username: {{profileDetails.username}}</h4>
+  </div>
+  <div class="card" style="width: 70vw; height: 65vh;  margin-left: 40px;">
+    <div class="container">
+      <div class="row" style="padding: 20px">
+        <div class="col" style="height: 60vh">
+          <h3>Pending solicitudes</h3>
+          <ol>
+            {{#each pendingApproval}}
+            <a href="/profile/{{this._id}}/solicitude-details">
+            <h4>
+              <li>Solicitude from {{this.owner.firstName}} {{this.owner.lastName}}</li>
+            </h4>
+            </a>
+            {{/each}}
+          </ol>
+        </div>
+        <div class="vr"></div>
+        <div class="col" style="height: 60vh">
+          <h3>Accepted Solicitudes</h3>
+          <ul>
+            {{#each acceptedApproval}}
+            <h5>
+            <li>Solicitude from
+              {{this.owner.firstName}}
+              {{this.owner.lastName}}</li>
+            </h5>
 
+            {{/each}}
+          </ul>
+        </div>
+        <div class="vr"></div>
+        <div class="col" style="height: 60vh">
+          <h3>Rejected Solicitudes</h3>
+          <ul>
+            {{#each rejectedApproval}}
+            <h5>
+            <li>Solicitude from {{this.owner.firstName}} {{this.owner.lastName}}</li>
+            </h5>
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
 {{!-- USUARIO --}}
 
 
 {{else}}
 <h2>Profile</h2>
 <div class="d-flex flex-direction-row">
-  {{!-- <div class="row row-cols-1 row-cols-md-2 g-4 mt-5" style="margin: 0px"> --}}
-    <div class="card" style="width: 20vw; height: 100vh;  margin-left: 40px;">
-      <img class="card-img-top rounded-circle" src="{{profileDetails.url}}" alt="user-Picture" />
-      <div class="card-body">
-        <h4>Username: {{profileDetails.username}}</h4>
-        <br />
-        <h5>Name: {{profileDetails.firstName}}</h5>
-        <h5>Lastname: {{profileDetails.lastName}}</h5>
-        <h5>Wallet: ${{profileDetails.wallet}}
-          <span class="text-primary">{{status}}</span>
-        </h5>
-        <br>
-        <br>
-        <a href="/profile/edit">
-          <button class="btn btn-primary" style="width: 50%">Edit profile</button>
-        </a>
-        <br>
-        <br>
-        <a href="/profile/credit">
-          <button class="btn btn-primary" style="width: 70%">Recharge credit</button>
-        </a>
-        <br />
-        <br>
-        <a href="/profile/create">
-          <button class="btn btn-primary" style="width: 50%">Create NFT</button>
-        </a>
-      </div>
-    </div>
-
-
-    <div class="card text-center" style="width: 70vw; margin-left: 60px; margin-bottom: 20px; padding-bottom: 20px">
-      <div class="row row-cols-1 row-cols-md-2 g-4 mt-5 d-flex justify-content-around">
-        {{#each userNft}}
-        <div class="card text-center d-flex align-items-center" style="width: 20%; margin: 10px; padding: 0px 0px 12px 0px">
-          <img class="card-img-top" src="{{this.url}}" alt="nft-image" width="138px" height="220px" />
-          <h6 class="card-title" style="padding-top: 5px">{{this.name}}</h6>
-          <a href="/profile/{{this._id}}/details">
-            <button class="btn btn-primary " style="width: 100%">Go see the details</button>
-          </a>
-        </div>
-        {{/each}}
-      </div>
+  <div class="card" style="width: 20vw; height: 100vh;  margin-left: 40px; ">
+    <img class="card-img-top rounded-circle" src="{{profileDetails.url}}" alt="user-Picture" style="padding: 16px"/>
+    <div class="card-body">
+      <h4>Username: {{profileDetails.username}}</h4>
+      <br />
+      <h5>Name: {{profileDetails.firstName}}</h5>
+      <h5>Lastname: {{profileDetails.lastName}}</h5>
+      <h5>Wallet: ${{profileDetails.wallet}}
+        <span class="text-primary">{{status}}</span>
+      </h5>
+      <br>
+      <br>
+      <a href="/profile/edit">
+        <button class="btn btn-primary" style="width: 50%">Edit profile</button>
+      </a>
+      <br>
+      <br>
+      <a href="/profile/credit">
+        <button class="btn btn-primary" style="width: 70%">Recharge credit</button>
+      </a>
+      <br />
+      <br>
+      <a href="/profile/create">
+        <button class="btn btn-primary" style="width: 50%">Create NFT</button>
+      </a>
     </div>
   </div>
-  {{!-- </div> --}}
+
+
+  <div class="card text-center" style="width: 70vw; margin-left: 60px; margin-bottom: 20px; padding-bottom: 20px">
+    <div class="row row-cols-1 row-cols-md-2 g-4 mt-5 d-flex justify-content-around">
+      {{#each userNft}}
+      <div class="card text-center d-flex align-items-center"
+        style="width: 20%; margin: 10px; padding: 0px 0px 12px 0px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.3);">
+        <img class="card-img-top" src="{{this.url}}" alt="nft-image" width="138px" height="220px" />
+        <h6 class="card-title" style="padding-top: 5px">{{this.name}}</h6>
+        <a href="/profile/{{this._id}}/details">
+          <button class="btn btn-primary " style="width: 100%">Go see the details</button>
+        </a>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</div>
+
 {{/if}}

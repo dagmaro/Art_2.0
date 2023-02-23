@@ -1,11 +1,11 @@
 <div class="auth">
   <div class="auth-class border border-secondary border-3 rounded">
-    <h3>Sign up</h3>
+    <h3 style="font-weight: bolder;">Sign up</h3>
     <br>
     <form action="/auth/signup" method="post" class="auth-form row g-3">
-      <label for="username" class="form-label">Insert username</label>
+      <label for="username" class="form-label" style="font-size: 1.25rem;">Insert username</label>
       <input type="text" name="username" class="form-control"/>
-      <label for="password" class="form-label">Insert a password</label>
+      <label for="password" class="form-label" style="font-size: 1.25rem;">Insert a password</label>
       <input type="password" name="password" class="form-control"/>
       {{#if errorMessage}}
         <span class="text-danger">{{this.errorMessage}}</span>

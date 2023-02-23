@@ -2,17 +2,16 @@
 <div class="card mb-3" style="max-width: 1050px; margin-left: 250px; margin-top: 10px">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="{{nftDetails.url}}" class="img-fluid rounded-start" alt="nft-picture" width="400px" />
+      <img src="{{nftDetails.url}}" class="img-fluid rounded-start" alt="nft-picture" width="400px" height="500px"/>
     </div>
     <div class="col text-center">
-      <div class="card-body">
+      <div class="card-body" style="padding-bottom: 0px;">
         <h2 class="card-title"><span style="font-weight: bold;">NFT:</span> {{this.nftDetails.name}}</h2>
         <br>
         <br>
         <h3 class="card-subtitle mb-2"> <span style="font-weight: bold;">Collection:</span>
           {{nftDetails.collectionType}}</h3>
-          <br>
-          <br>
+        <br>
         <h3 class="card-subtitle mb-2"><span style="font-weight: bold;">Price:</span> ${{nftDetails.price}}</h3>
       </div>
     </div>
@@ -22,10 +21,12 @@
 
 <div class="d-flex justify-content-end" style="margin-right: 15rem">
   {{#if sameId}}
-  <p style="font-size: 24px">This is your NFT</p>
+  <div>
+    <div class="text-bg-success p-3 " style="width: 500px; text-align: center; font-size: 20px">This is your NFT</div>
+  </div>
   {{else}}
   <form action="/gallery/{{nftDetails._id}}/details" method="post">
-    <button class="btn btn-primary" style="width: 100%">Buy</button>
+    <button class="btn btn-primary" style="width: 100%; padding: 8px 24px">Buy</button>
   </form>
   {{/if}}
 </div>

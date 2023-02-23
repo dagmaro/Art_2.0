@@ -17,7 +17,12 @@ nav {
 }
 
 a {
-  color: rgb(0, 183, 255);
+  color: rgb(77, 9, 114);
+  text-decoration: none;
+}
+
+a:hover {
+  color: bisque;
 }
 
 h1 {
@@ -53,6 +58,16 @@ span {
 }
 
 .btn-primary {
+  border-radius: 15px;
+  width: 33%;
+}
+
+.btn-success {
+  border-radius: 15px;
+  width: 33%;
+}
+
+.btn-danger {
   border-radius: 15px;
   width: 33%;
 }
@@ -96,6 +111,12 @@ span {
 
 #myBtn:hover {
   background-color: bisque;
+}
+
+.vr {
+  background-color: black;
+  opacity: 50%;
+  padding: 2px;
 }
 
 footer {

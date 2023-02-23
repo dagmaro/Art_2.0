@@ -1,26 +1,29 @@
-<div>
-  <h2>Create NFT</h2>
+<h2>Create NFT</h2>
+<div class="auth" style="margin-top: 10px">
+  <div class="auth-class border border-secondary border-3 rounded" style="padding-bottom: 50px; padding-top: 60px">
+    <form action="/profile/create" method="post" enctype="multipart/form-data" class="auth-form row g-3">
+      <label for="name" class="form-label" style="font-size: 1.25rem;" >Name: </label>
+      <input type="text" class="form-control"  name="name" />
 
-  <form action="/profile/create" method="post" enctype="multipart/form-data">
-    <label for="name">Name: </label>
-    <input type="text" name="name" />
+      <label for="url" class="form-label" style="font-size: 1.25rem;">Choose an image</label>
+      <input type="file" class="form-control" aria-label="file example" name="url" width="300px" />
 
-    <label for="url">Choose an image</label>
-    <input type="file" name="url" width="300px"/>
+      <label for="price" class="form-label" style="font-size: 1.25rem;">Price</label>
+      <input type="text" class="form-control" name="price" />
 
-    <label for="price">Price</label>
-    <input type="text" name="price" />
+      <label for="collectionType" class="form-label" style="font-size: 1.25rem;">Choose the collection</label>
+      <select class="form-select" aria-label="select example" name="collectionType">
+        <option value="coolstuff">coolstuff</option>
+        <option value="weirdstuff">weirdstuff</option>
+        <option value="patata">patata</option>
+      </select>
+      <button class="btn btn-primary">Create</button>
 
-    <label for="collectionType">Choose the collection</label>
-    <select name="collectionType">
-      <option value="coolstuff">coolstuff</option>
-      <option value="weirdstuff">weirdstuff</option>
-      <option value="patata">patata</option>
-    </select>
-    <button>Create</button>
-    
-  </form>
-    <a href="/profile/">
+    </form>
+  </div>
+</div>
+<div style=" margin-top: 45px; width: 500px;">
+  <a href="/profile/">
     <button class="btn btn-primary">Go back</button>
   </a>
 </div>

@@ -1,29 +1,48 @@
-<div>
-    <h2>Profile</h2>
-    <h4>Username: {{profileDetails.username}}</h4>
-    <img src="{{profileDetails.url}}" alt="user-Picture" width="200px" />
-    <br>
-    <ol>
-        {{#each solicitudeCreditAdmin}}
-        <a href="/profile/{{this._id}}/solicitude-details">
-            <li>Solicitude from {{this.owner.firstName}} {{this.owner.lastName}}</li>
-        </a>
-        {{/each}}
-    </ol>
-    <p>{{eachSolicitude.owner.firstName}} {{eachSolicitude.owner.lastName}} wants to recharge
-        ${{eachSolicitude.credit}}.</p>
-    <p>This user has ${{eachSolicitude.owner.wallet}}</p>
-
-    <label for="acceptSolicitude">Do you accept the solicitude?</label>
-    <br>
-    {{!-- <input type="text" name="acceptSolicitude"> --}}
-    <br>
-    <form action="/profile/{{eachSolicitude._id}}/solicitude-details/yes" method="post">
-        <button>Accept</button>
-    </form>
-    <form action="/profile/{{eachSolicitude._id}}/solicitude-details/no" method="post">
-        <button>Reject</button>
-    </form>
+<h2>Solicitudes details</h2>
+<div class="d-flex flex-direction-row">
+    <div class="card" style="width: 20vw; height: 60vh;  margin-left: 40px;">
+        <img src="{{profileDetails.url}}" class="card-img-top rounded-circle" alt="user-Picture" width="200px"
+            style="padding: 16px" />
+        <h4 style="padding: 16px;">Username: {{profileDetails.username}}</h4>
+    </div>
+    <div class="card" style="width: 70vw; height: 65vh; margin-left: 20px;">
+        <div class="d-flex flex-direction-row" style="padding: 20px">
+            <div style="padding: 20px 25px 40px 10px;">
+                <ol>
+                    {{#each solicitudeCreditAdmin}}
+                    <a href="/profile/{{this._id}}/solicitude-details">
+                        <li style="font-size: 20px">Solicitude from {{this.owner.firstName}} {{this.owner.lastName}}
+                        </li>
+                    </a>
+                    <br>
+                    {{/each}}
+                </ol>
+            </div>
+            <div class="vr"></div>
+            <div style="height: 60vh; margin-left: 40px; margin-top: 0px">
+                <div style="border-radius: 25px; background-color:bisque; color: black; padding: 20px;">
+                    <p style="font-size: 20px;">{{eachSolicitude.owner.firstName}} {{eachSolicitude.owner.lastName}}
+                        wants to recharge
+                        ${{eachSolicitude.credit}}.</p>
+                    <p style="font-size: 20px">This user has ${{eachSolicitude.owner.wallet}}</p>
+                    <label for="acceptSolicitude" style="font-size: 20px">Do you accept the solicitude?</label>
+                    <br>
+                    <br>
+                    <div class="d-flex justify-content-evenly">
+                        <form action="/profile/{{eachSolicitude._id}}/solicitude-details/yes" method="post">
+                            <button class="btn btn-success" style="width: 100%">Accept</button>
+                        </form>
+                        
+                        <form action="/profile/{{eachSolicitude._id}}/solicitude-details/no" method="post">
+                            <button class="btn btn-danger" style="width: 100%">Reject</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style=" margin-top: 45px; width: 500px;">
     <a href="/profile/">
         <button class="btn btn-primary">Go back</button>
     </a>
