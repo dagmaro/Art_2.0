@@ -1,29 +1,35 @@
-<div class="card mb-3" style="max-width: 1050px; margin-left: 250px; margin-top: 20px">
-
-  <div class="col-md-4">
-    <img src="{{nftDetails.url}}" class="img-fluid rounded-start" alt="nft-picture" width="400px" />
-  </div>
-  <div class="col text-center">
-    <div class="card-body">
-      <h2 class="card-title">NFT: {{nftDetails.name}}</h2>
-      <p class="card-text">{{nftDetails.price}}</p>
-      <p class="card-text">{{nftDetails.collectionType}}</p>
+<div class="card mb-3" style="max-width: 1050px; margin-left: 250px; margin-top: 80px">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{nftDetails.url}}" class="img-fluid rounded-start" alt="nft-picture" width="400px" />
+    </div>
+    <div class="col text-center">
+      <div class="card-body">
+        <h2 class="card-title"><span style="font-weight: bold;">NFT:</span> {{nftDetails.name}}</h2>
+        <br>
+        <br>
+        <h4 class="card-subtitle mb-2"> <span style="font-weight: bold;">Collection:</span> {{nftDetails.collectionType}}</h4>
+        <h4 class="card-subtitle mb-2"><span style="font-weight: bold;">Price:</span> {{nftDetails.price}}</h4>
+      </div>
     </div>
   </div>
-
+</div>
+<div class="d-flex justify-content-end" style="margin-right: 15rem">
   <form action="/profile/{{nftDetails._id}}/details" method="post" id="details-nft">
     <div class="form-check form-switch">
       {{#if nftDetails.isForSale}}
-      <input type="checkbox" name="isForSale" role="switch" id="flexSwitchCheckDefault" class="form-check-input"
+      <input type="checkbox" name="isForSale" role="switch" id="flexSwitchCheckDefault" class="form-check-input form-switch"
         checked />
-      <label for="flexSwitchCheckDefault" name="isForSale" class="form-check-label">For sale</label>
+      <label for="flexSwitchCheckDefault" name="isForSale" class="form-check-label" style="font-size: 24px;">For sale</label>
       {{else}}
       <input type="checkbox" name="isForSale" role="switch" id="flexSwitchCheckDefault" class="form-check-input" />
       <label for="flexSwitchCheckDefault" name="isForSale" class="form-check-label">Not for sale</label>
       {{/if}}
     </div>
   </form>
-
-  <a href="/profile/">Go back</a>
-
 </div>
+  <div style=" margin-top: 120px; width: 500px;">
+  <a href="/profile/">
+    <button class="btn btn-primary">Go back</button>
+  </a>
+  </div>

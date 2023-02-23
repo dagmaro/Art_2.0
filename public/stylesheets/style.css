@@ -89,6 +89,10 @@ span {
   left: 95%;
 }
 
+.form-switch {
+  font-size: 24px;
+}
+
 #myBtn:hover {
   background-color: bisque;
 }

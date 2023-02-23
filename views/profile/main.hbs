@@ -4,7 +4,7 @@
   <img src="{{profileDetails.url}}" alt="user-Picture" width="200px" />
   <br />
   {{#if isUserAdmin}}
-  <h2>Pending solicitudes</h2>
+  <h3>Pending solicitudes</h3>
   <ol>
     {{#each pendingApproval}}
     <a href="/profile/{{this._id}}/solicitude-details">
@@ -12,7 +12,7 @@
     </a>
     {{/each}}
   </ol>
-  <h2>Accepted Solicitudes</h2>
+  <h3>Accepted Solicitudes</h3>
   <ol>
     {{#each acceptedApproval}}
     <li>Solicitude from
@@ -20,7 +20,7 @@
       {{this.owner.lastName}}</li>
     {{/each}}
   </ol>
-  <h2>Rejected Solicitudes</h2>
+  <h3>Rejected Solicitudes</h3>
   <ol>
     {{#each rejectedApproval}}
     <li>Solicitude from {{this.owner.firstName}} {{this.owner.lastName}}</li>

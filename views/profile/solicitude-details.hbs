@@ -3,24 +3,28 @@
     <h4>Username: {{profileDetails.username}}</h4>
     <img src="{{profileDetails.url}}" alt="user-Picture" width="200px" />
     <br>
-        <ol>
-    {{#each solicitudeCreditAdmin}}
-    <a href="/profile/{{this._id}}/solicitude-details">
+    <ol>
+        {{#each solicitudeCreditAdmin}}
+        <a href="/profile/{{this._id}}/solicitude-details">
             <li>Solicitude from {{this.owner.firstName}} {{this.owner.lastName}}</li>
-    </a>
-    {{/each}}
-        </ol>
+        </a>
+        {{/each}}
+    </ol>
     <p>{{eachSolicitude.owner.firstName}} {{eachSolicitude.owner.lastName}} wants to recharge
         ${{eachSolicitude.credit}}.</p>
     <p>This user has ${{eachSolicitude.owner.wallet}}</p>
 
-        <label for="acceptSolicitude">Do you accept the solicitude?</label>
-        <br>
-        {{!-- <input type="text" name="acceptSolicitude"> --}}
-        <br>
+    <label for="acceptSolicitude">Do you accept the solicitude?</label>
+    <br>
+    {{!-- <input type="text" name="acceptSolicitude"> --}}
+    <br>
     <form action="/profile/{{eachSolicitude._id}}/solicitude-details/yes" method="post">
         <button>Accept</button>
     </form>
-      <form action="/profile/{{eachSolicitude._id}}/solicitude-details/no" method="post">
+    <form action="/profile/{{eachSolicitude._id}}/solicitude-details/no" method="post">
         <button>Reject</button>
     </form>
+    <a href="/profile/">
+        <button class="btn btn-primary">Go back</button>
+    </a>
+</div>
