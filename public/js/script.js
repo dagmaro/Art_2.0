@@ -20,3 +20,10 @@ function topFunction() {
   document.body.scrollTop = 0; // For safari
   document.documentElement.scrollTop = 0; // For Chrome...
 }
+
+const myModal = document.getElementById('exampleModal')
+
+
+myModal.addEventListener('shown.bs.modal', () => {
+  myBtn.focus()
+})

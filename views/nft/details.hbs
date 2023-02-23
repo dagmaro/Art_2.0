@@ -1,24 +1,45 @@
+<h2>NFT Details</h2>
+<div class="card mb-3" style="max-width: 1050px; margin-left: 250px; margin-top: 10px">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{nftDetails.url}}" class="img-fluid rounded-start" alt="nft-picture" width="400px" />
+    </div>
+    <div class="col text-center">
+      <div class="card-body">
+        <h2 class="card-title"><span style="font-weight: bold;">NFT:</span> {{this.nftDetails.name}}</h2>
+        <br>
+        <br>
+        <h3 class="card-subtitle mb-2"> <span style="font-weight: bold;">Collection:</span>
+          {{nftDetails.collectionType}}</h3>
+          <br>
+          <br>
+        <h3 class="card-subtitle mb-2"><span style="font-weight: bold;">Price:</span> ${{nftDetails.price}}</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="d-flex justify-content-end" style="margin-right: 15rem">
+  {{#if sameId}}
+  <p style="font-size: 24px">This is your NFT</p>
+  {{else}}
+  <form action="/gallery/{{nftDetails._id}}/details" method="post">
+    <button class="btn btn-primary" style="width: 100%">Buy</button>
+  </form>
+  {{/if}}
+</div>
+
+{{#if errorMessage}}
+<div class="d-flex justify-content-center">
+  <div class="text-bg-danger p-3 " style="width: 500px; text-align: center;">{{this.errorMessage}}</div>
+</div>
+{{/if}}
 <div>
-    <h2>NFT Details</h2>
 
-    <h4>{{this.nftDetails.name}}</h4>
-    <img src="{{nftDetails.url}}" alt="nft-picture" width="200px">
-    <p>{{nftDetails.price}}</p>
-
-    {{#if sameId}}
-    <p>This is your NFT</p>
-    {{else}}
-    <form action="/gallery/{{nftDetails._id}}/details" method="post">
-        <button>Buy</button>
-    </form>
-    {{/if}}
-
-    {{#if errorMessage}}
-    <span class="text-danger">{{this.errorMessage}}</span>
-    {{/if}}
-      <a href="/gallery">
+</div>
+<div style="position: absolute; bottom: 20px; width: 500px;">
+  <a href="/gallery">
     <button class="btn btn-primary">Go back</button>
   </a>
-
-
 </div>
