@@ -22,11 +22,22 @@ router.get("/", isLoggedIn, async (req, res, next) => {
       pendingApproval: "rejected",
     }).populate("owner");
     let status = "";
-    if (solictudeInfoPending[0] !== undefined) {
-      status = solictudeInfoPending[0].pendingApproval;
+    const loggedUserSolicitude = solictudeInfoPending.filter(
+      (eachSolicitude) => {
+        if (_id == eachSolicitude.owner._id) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    );
+    if (loggedUserSolicitude[0] !== undefined) {
+      status = loggedUserSolicitude[0].pendingApproval;
     } else {
       status = "";
     }
+
+    console.log(solictudeInfoPending);
     res.render("profile/main.hbs", {
       profileDetails: profileDetails,
       userNft: userNft,
