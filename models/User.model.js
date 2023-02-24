@@ -36,10 +36,6 @@ const userSchema = new mongoose.Schema(
       enum: ["user", "admin"],
       default: "user",
     },
-    // pendingApproval: {
-    //   type: Boolean,
-    //   default: false,
-    // },
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`

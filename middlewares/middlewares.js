@@ -1,31 +1,30 @@
-const isLoggedIn = (req,res,next) => {
-  if (req.session.activeUser === undefined){
-    res.redirect("/auth/login")
+const isLoggedIn = (req, res, next) => {
+  if (req.session.activeUser === undefined) {
+    res.redirect("/auth/login");
   } else {
-    isAdmin(req, res)
-    next()
+    isAdmin(req, res);
+    next();
   }
-}
+};
 
 const updateLocals = (req, res, next) => {
   if (req.session.activeUser === undefined) {
-    res.locals.isUserActive = false
+    res.locals.isUserActive = false;
   } else {
-    res.locals.isUserActive = true
+    res.locals.isUserActive = true;
   }
-  next()
-}
+  next();
+};
 
-const isAdmin = (req, res)=> {
-  if (req.session.activeUser.userType === "admin"){
-    res.locals.isUserAdmin = true
+const isAdmin = (req, res) => {
+  if (req.session.activeUser.userType === "admin") {
+    res.locals.isUserAdmin = true;
   } else {
-    res.locals.isUserAdmin = false
+    res.locals.isUserAdmin = false;
   }
-}
-
+};
 
 module.exports = {
   isLoggedIn: isLoggedIn,
   updateLocals: updateLocals,
-}
+};

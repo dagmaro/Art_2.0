@@ -1,10 +1,10 @@
 {{!-- ADMIN --}}
-
 {{#if isUserAdmin}}
 <h2>Profile</h2>
 <div class="d-flex flex-direction-row">
   <div class="card" style="width: 20vw; height: 60vh;  margin-left: 40px;">
-    <img src="{{profileDetails.url}}" class="card-img-top rounded-circle" alt="user-Picture" width="100px" style="padding: 16px" />
+    <img src="{{profileDetails.url}}" class="card-img-top rounded-circle" alt="user-Picture" width="100px"
+      style="padding: 16px" />
     <br>
     <br>
     <h4 style="padding: 16px"> Username: <span>{{profileDetails.username}}</span></h4>
@@ -17,24 +17,23 @@
           <ol>
             {{#each pendingApproval}}
             <a href="/profile/{{this._id}}/solicitude-details">
-            <h4>
-              <li>Solicitude from {{this.owner.firstName}} {{this.owner.lastName}}</li>
-            </h4>
+              <h4>
+                <li>Solicitude from {{this.owner.firstName}} {{this.owner.lastName}}</li>
+              </h4>
             </a>
             {{/each}}
           </ol>
         </div>
         <div class="vr"></div>
         <div class="col" style="height: 60vh">
-          <h3>  <span style="color: green">Accepted</span> Solicitudes</h3>
+          <h3> <span style="color: green">Accepted</span> Solicitudes</h3>
           <ul>
             {{#each acceptedApproval}}
             <h5>
-            <li>Solicitude from
-              {{this.owner.firstName}}
-              {{this.owner.lastName}}</li>
+              <li>Solicitude from
+                {{this.owner.firstName}}
+                {{this.owner.lastName}}</li>
             </h5>
-
             {{/each}}
           </ul>
         </div>
@@ -44,31 +43,28 @@
           <ul>
             {{#each rejectedApproval}}
             <h5>
-            <li>Solicitude from {{this.owner.firstName}} {{this.owner.lastName}}</li>
+              <li>Solicitude from {{this.owner.firstName}} {{this.owner.lastName}}</li>
             </h5>
             {{/each}}
           </ul>
         </div>
       </div>
     </div>
-
-
   </div>
 </div>
 {{!-- USUARIO --}}
-
-
 {{else}}
 <h2>Profile</h2>
 <div class="d-flex flex-direction-row">
   <div class="card" style="width: 20vw; height: 100vh;  margin-left: 40px; ">
-    <img class="card-img-top rounded-circle" src="{{profileDetails.url}}" alt="user-Picture" style="padding: 16px" width="50px"  height="400px"/>
+    <img class="card-img-top rounded-circle" src="{{profileDetails.url}}" alt="user-Picture" style="padding: 16px"
+      width="50px" height="400px" />
     <div class="card-body">
       <h4>Username: <span>{{profileDetails.username}}</span></h4>
       <br />
       <h5>Name: <span>{{profileDetails.firstName}}</span></h5>
       <h5>Lastname: <span>{{profileDetails.lastName}}</span></h5>
-      <h5>Wallet: <span>${{profileDetails.wallet}}</span> 
+      <h5>Wallet: <span>${{profileDetails.wallet}}</span>
         <span class="text-primary">{{status}}</span>
       </h5>
       <br>
@@ -88,8 +84,6 @@
       </a>
     </div>
   </div>
-
-
   <div class="card text-center" style="width: 70vw; margin-left: 60px; margin-bottom: 20px; padding-bottom: 20px">
     <div class="row row-cols-1 row-cols-md-2 g-4 mt-5 d-flex justify-content-around">
       {{#each userNft}}

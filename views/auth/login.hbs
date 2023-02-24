@@ -1,14 +1,14 @@
 <div class="auth">
   <div class="auth-class border border-secondary border-3 rounded">
     <h3 style="font-weight: bolder;">Log in</h3>
-    <br>
+    <br />
     <form action="/auth/login" method="post" class="auth-form row g-3">
-        <label for="username" class="form-label" style="font-size: 1.25rem;"></label>
-        <input type="text" placeholder="Username" name="username" class="form-control" />
-        <label for="password" class="form-label" style="font-size: 1.25rem;"></label>
-        <input type="password" placeholder="Password" name="password" class="form-control"/>
+      <label for="username" class="form-label" style="font-size: 1.25rem;"></label>
+      <input type="text" placeholder="Username" name="username" class="form-control" />
+      <label for="password" class="form-label" style="font-size: 1.25rem;"></label>
+      <input type="password" placeholder="Password" name="password" class="form-control" />
       {{#if errorMessage}}
-        <span class="text-danger">{{this.errorMessage}}</span>
+      <span class="text-danger">{{this.errorMessage}}</span>
       {{/if}}
       <button class="btn btn-primary">Log in</button>
     </form>

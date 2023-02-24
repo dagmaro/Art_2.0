@@ -4,12 +4,12 @@ const router = express.Router();
 const User = require("../models/User.model.js");
 const bcrypt = require("bcryptjs");
 
-// GET => renderizar el formulario
+// GET => renderizar el formulario de sign up
 router.get("/signup", (req, res, next) => {
   res.render("auth/signup.hbs");
 });
 
-// POST => reicibir/info
+// POST => reicibir info
 router.post("/signup", async (req, res, next) => {
   const { username, password } = req.body;
 
@@ -50,7 +50,7 @@ router.post("/signup", async (req, res, next) => {
   }
 });
 
-// GET renderizar el formulario
+// GET renderizar el formulario de login
 router.get("/login", (req, res, next) => {
   res.render("auth/login.hbs");
 });
@@ -88,9 +88,9 @@ router.post("/login", async (req, res, next) => {
 });
 
 router.get("/logout", (req, res, next) => {
-    req.session.destroy(() => {
-        res.redirect("/")
-    })
-})
+  req.session.destroy(() => {
+    res.redirect("/");
+  });
+});
 
 module.exports = router;

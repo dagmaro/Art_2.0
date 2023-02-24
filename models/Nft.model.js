@@ -18,12 +18,12 @@ const nftSchema = new mongoose.Schema(
     },
     collectionType: {
       type: String,
-      enum: ["coolstuff", "weirdstuff", "patata"]
-    }
+      enum: ["coolstuff", "weirdstuff", "patata"],
+    },
   },
   {
-    // this second object adds extra properties: `createdAt` and `updatedAt`    
-    timestamps: true
+    // this second object adds extra properties: `createdAt` and `updatedAt`
+    timestamps: true,
   }
 );
 

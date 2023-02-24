@@ -4,7 +4,7 @@ body {
   background-image: url("../images/bg.webp");
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment:fixed;
+  background-attachment: fixed;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -48,7 +48,7 @@ span {
   color: darkmagenta;
 }
 
-.card{
+.card {
   background-color: rgba(206, 191, 172, 0.7);
   border-radius: 15px;
 }
@@ -93,7 +93,6 @@ span {
   justify-content: center;
 }
 
-
 #myBtn {
   background-color: antiquewhite;
   color: black;
@@ -106,12 +105,12 @@ span {
   left: 95%;
 }
 
-.form-switch {
-  font-size: 24px;
-}
-
 #myBtn:hover {
   background-color: bisque;
+}
+
+.form-switch {
+  font-size: 24px;
 }
 
 .vr {

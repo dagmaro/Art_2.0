@@ -5,7 +5,8 @@
       {{#each availableNfts}}
       {{#if ../isUserActive}}
       <div class="col d-flex justify-content-center" style="width: 33%">
-        <div class="card text-center d-flex align-items-center" style="width: 80%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.3)">
+        <div class="card text-center d-flex align-items-center"
+          style="width: 80%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.3)">
           <a href="/gallery/{{this._id}}/details">
             <img src="{{this.url}}" class="card-img-top" alt="nft-image" width="300px">
           </a>
@@ -18,7 +19,8 @@
       </div>
       {{else}}
       <div class="col d-flex justify-content-center" style="width: 33%">
-        <div class="card text-center d-flex align-items-center" style="width: 80%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.3);">
+        <div class="card text-center d-flex align-items-center"
+          style="width: 80%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.3);">
           <img src="{{this.url}}" class="card-img-top" alt="nft-image" width="300px">
           <div class="card-body">
             <h4 class="card-title">NFT: {{this.name}}</h4>

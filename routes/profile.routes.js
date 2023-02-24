@@ -36,8 +36,6 @@ router.get("/", isLoggedIn, async (req, res, next) => {
     } else {
       status = "";
     }
-
-    console.log(solictudeInfoPending);
     res.render("profile/main.hbs", {
       profileDetails: profileDetails,
       userNft: userNft,
@@ -75,12 +73,10 @@ router.get("/:id/solicitude-details", async (req, res, next) => {
 router.post("/:id/solicitude-details/:response", async (req, res, next) => {
   const id = req.params.id;
   const response = req.params.response;
-  console.log(response);
   try {
     const solicitudeInfo = await Solicitude.findById(id).populate("owner");
     const transactionCredit =
       solicitudeInfo.owner.wallet + solicitudeInfo.credit;
-    console.log(transactionCredit);
     const ownerId = solicitudeInfo.owner._id;
 
     if (response === "yes") {
@@ -179,7 +175,6 @@ router.get("/credit", async (req, res, next) => {
   const { _id } = req.session.activeUser;
   try {
     const userInfo = await User.findById(_id);
-    // .select({"firstName: 1", "lastName: 1"})
     res.render("profile/recharge-credit.hbs", {
       firstName: userInfo.firstName,
       lastName: userInfo.lastName,
@@ -223,7 +218,6 @@ router.post("/credit", async (req, res, next) => {
       pendingApproval: "pending",
       owner: req.session.activeUser._id,
     });
-    // console.log(pendingApproval)
     res.redirect("/profile");
   } catch (error) {
     next(error);

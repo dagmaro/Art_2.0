@@ -2,15 +2,12 @@
 <div class="auth" style="margin-top: 10px">
   <div class="auth-class border border-secondary border-3 rounded" style="padding-bottom: 50px; padding-top: 60px">
     <form action="/profile/create" method="post" enctype="multipart/form-data" class="auth-form row g-3">
-      <label for="name" class="form-label" style="font-size: 1.25rem;" >Name: </label>
+      <label for="name" class="form-label" style="font-size: 1.25rem;">Name: </label>
       <input type="text" class="form-control" placeholder="Ex. my sweet potato" name="name" />
-
       <label for="url" class="form-label" style="font-size: 1.25rem;">Choose an image</label>
       <input type="file" class="form-control" aria-label="file example" name="url" width="300px" />
-
       <label for="price" class="form-label" style="font-size: 1.25rem;">Price</label>
       <input type="text" class="form-control" placeholder="00000" name="price" />
-
       <label for="collectionType" class="form-label" style="font-size: 1.25rem;">Choose the collection</label>
       <select class="form-select" aria-label="select example" name="collectionType">
         <option value="coolstuff">coolstuff</option>
@@ -18,7 +15,6 @@
         <option value="patata">patata</option>
       </select>
       <button class="btn btn-primary">Create</button>
-
     </form>
   </div>
 </div>

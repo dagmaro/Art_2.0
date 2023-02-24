@@ -1,4 +1,4 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
 const solicitudeSchema = new mongoose.Schema({
   credit: Number,
@@ -9,9 +9,9 @@ const solicitudeSchema = new mongoose.Schema({
   pendingApproval: {
     type: String,
     enum: ["accepted", "rejected", "pending"],
-    default: ""
+    default: "",
   },
-})
+});
 
-const Solicitude = mongoose.model("Solicitude", solicitudeSchema)
-module.exports = Solicitude
+const Solicitude = mongoose.model("Solicitude", solicitudeSchema);
+module.exports = Solicitude;
