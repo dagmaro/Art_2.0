@@ -38,6 +38,7 @@ Homepage
 
 - GET / 
   - renders the homepage
+
 - GET /auth/signup
   - redirects to /signup
   - renders the signup form 
@@ -56,6 +57,7 @@ Homepage
     - password
 - POST /auth/logout
   - body: (empty)
+
 - GET /profile
   - renders the profile details
 - GET /profile/:id/solicitude-details
@@ -92,6 +94,7 @@ Homepage
     - credit
     - pendingApproval
     - owner
+
 - GET /gallery
   - renders the "NFTs" gallery
 - GET /gallery/:id/details
@@ -127,9 +130,9 @@ wallet:
  - type: Number
  - default: 0
 userType: 
- -type: String
- -enum: ["user", "admin"]
- -default: "user"
+ - type: String
+ - enum: ["user", "admin"]
+ - default: "user"
 
 ```
 Nft model
@@ -179,4 +182,4 @@ The url to your repository and to your deployed project
 
 The url to your presentation slides
 
-[Slides Link](http://slides.com)
+[Slides Link](https://docs.google.com/presentation/d/1jQJGZk-U8LpZKcONCfmKM7b2xUN8aABzR9dPTFFhdCo/edit?usp=sharing)
